@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	message "./Message"
+	"./aes"
 	"./connect"
 	"./getcharinfo"
 	loadclient "./loadClient"
@@ -46,6 +47,9 @@ func main() {
 	http.HandleFunc("/pleaseReset", saveformation.ResetFormation)       // 編成のリセット
 
 	http.HandleFunc("/pleaseResponse", message.SendMessage) // Debug用メッセージの取得
+	http.HandleFunc("/pleaseCipher", aes.CipherMessage)     // 暗号/復号
+	http.HandleFunc("/pleaseCBC", aes.CBCMessage)           // 暗号/復号（CBC）
+	http.HandleFunc("/pleaseCTR", aes.CTRMessage)           // 暗号/復号（CTR）
 
 	// 応答待ち
 	http.ListenAndServe(":8080", nil)

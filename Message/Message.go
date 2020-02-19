@@ -8,6 +8,7 @@ import (
 // SendMessage メッセージを送りたい
 func SendMessage(w http.ResponseWriter, r *http.Request) {
 
+	// #region コメントアウト
 	// 送りたいメッセージ
 	data := "{\"test\":\"SuccessSendMessage\"}"
 	//data := "{test:SuccessSendMessage}"
@@ -21,4 +22,6 @@ func SendMessage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(string(responses))
 
 	//log.Print("[送信完了 : ", w, "]")
+	// #endregion
+
 }

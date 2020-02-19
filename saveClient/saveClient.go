@@ -72,7 +72,7 @@ func SaveUserData(w http.ResponseWriter, r *http.Request) {
 
 	CreateNewFormation(create)
 
-	fmt.Println("\nユーザー新規登録完了:")
+	fmt.Println("\nユーザー新規登録完了")
 	fmt.Println("\n新規ユーザーID: " + "\x1b[33m" + create + "\x1b[0m")
 	fmt.Println("新規ログインID: " + "\x1b[33m" + savedata.Data.LoginID + "\x1b[0m")
 	fmt.Println("新規パスワード: " + "\x1b[33m" + savedata.Data.Passward + "\x1b[0m")

@@ -148,20 +148,31 @@ func GetFormation(w http.ResponseWriter, r *http.Request) {
 
 	// デバッグ用の表示メッセージ
 	fmt.Println("\n編成キャラクター情報")
-	for i := 0; i < 3; i++ {
+	if savedata != nil {
+		for i := 0; i < 3; i++ {
 
-		// 編成されている場合
-		if savedata[i].Data.CharName != noData {
+			// 編成されている場合
+			if savedata[i].Data.CharName != noData {
 
-			fmt.Printf("\n%d番目のキャラクター名: "+"\x1b[33m"+savedata[i].Data.CharName+"\x1b[0m", i+1)
+				fmt.Printf("\n%d番目のキャラクター名: "+"\x1b[33m"+savedata[i].Data.CharName+"\x1b[0m", i+1)
 
-		} else {
+			} else {
+
+				// 編成されていない場合
+				fmt.Printf("\n%d番目のキャラクター名: "+"\x1b[33mなし\x1b[0m", i+1)
+
+			}
+		}
+	} else {
+
+		// 新規登録ユーザーの場合savedataの中身はnil
+		for i := 0; i < 3; i++ {
 
 			// 編成されていない場合
 			fmt.Printf("\n%d番目のキャラクター名: "+"\x1b[33mなし\x1b[0m", i+1)
-
 		}
 	}
+
 	fmt.Println("\n\n----------------------------------------------------")
 
 	// 念のためリセット

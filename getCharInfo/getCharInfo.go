@@ -69,7 +69,6 @@ func GetCharInfo(w http.ResponseWriter, r *http.Request) {
 	// characterinfoテーブルとpossessioncharofuserテーブルを内部結合する
 	// その後、characterinfoテーブルのidとpossessioncharofuserテーブルのcharIDが等しいもの（ =そのユーザーが所持しているキャラクター ）を取得する
 	rows, err := getCnn.Query("SELECT * FROM testschema.characterinfo INNER JOIN testschema.possessioncharofuser ON testschema.characterinfo.id = testschema.possessioncharofuser.charID WHERE testschema.possessioncharofuser.userID = ?", savedata.Data.UserID)
-	// rows, err := getCnn.Query("SELECT FROM testschema.characterinfo INNER JOIN testschema.possessioncharofuser ON testschema.characterinfo.id = testschema.possessioncharofuser.charID WHERE testschema.possessioncharofuser.userID = ?", savedata.Data.UserID)
 	defer rows.Close()
 	if err != nil {
 		fmt.Println(err)
